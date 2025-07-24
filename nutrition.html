@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritional Information | Online Food Delivery</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+    <!-- Hover CSS -->
+    <link rel="stylesheet" href="css/hover-min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos específicos para a página de nutrição */
+        .nutrition-section {
+            padding: 50px 0;
+        }
+        
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        .nutrition-table th, .nutrition-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .nutrition-table th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+        
+        .nutrition-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .allergen-info {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .allergen-tag {
+            display: inline-block;
+            background-color: #ffeb3b;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+        
+        .food-nutrition {
+            margin-bottom: 40px;
+        }
+        
+        .nutrition-highlight {
+            font-weight: bold;
+            color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Section Start -->
+    <header class="navbar">
+        <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
+            <div class="container">
+                <!-- logo -->
+                <div class="logo">
+                    <a href="index.html" title="Logo">
+                        <img src="img/logo.svg" alt="Logo" class="img-responsive">
+                    </a>
+                </div>
+                <!-- Main Menu -->
+                <div class="menu text-right">
+                    <ul>
+                        <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
+                        <li><a class="hvr-underline-from-center" href="categories.html">Categories</a></li>
+                        <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
+                        <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>
+                        <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
+                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
+                        <li><a class="hvr-underline-from-center" href="login.html">Login</a></li>
+                        <li>
+                            <a id="shopping-cart" class="shopping-cart">
+                                <i class="fa fa-cart-arrow-down"></i>
+                                <span class="badge">4</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Navigation Section End -->
+
+    <!-- Nutrition Info Section Start -->
+    <section class="nutrition-section">
+        <div class="container">
+            <h2 class="text-center">Nutritional Information & Allergens</h2>
+            <div class="heading-border"></div>
+            
+            <p class="text-center">We care about your health and dietary needs. Below you'll find detailed nutritional information and allergen warnings for all our menu items.</p>
+            
+            <div class="food-nutrition">
+                <h3>Pizza</h3>
+                <div class="food-menu-img" style="max-width: 200px; margin: 15px 0;">
+                    <img src="img/food/p1.jpg" alt="Pizza" class="img-responsive img-curve">
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrient</th>
+                            <th>Per Serving</th>
+                            <th>% Daily Value*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Calories</td>
+                            <td>285 kcal</td>
+                            <td>14%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Fat</td>
+                            <td>10g</td>
+                            <td>13%</td>
+                        </tr>
+                        <tr>
+                            <td>Saturated Fat</td>
+                            <td>4.5g</td>
+                            <td>23%</td>
+                        </tr>
+                        <tr>
+                            <td>Trans Fat</td>
+                            <td>0g</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td>Cholesterol</td>
+                            <td>18mg</td>
+                            <td>6%</td>
+                        </tr>
+                        <tr>
+                            <td>Sodium</td>
+                            <td>640mg</td>
+                            <td>28%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Carbohydrate</td>
+                            <td>36g</td>
+                            <td>13%</td>
+                        </tr>
+                        <tr>
+                            <td>Dietary Fiber</td>
+                            <td>2g</td>
+                            <td>7%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Sugars</td>
+                            <td>3g</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Protein</td>
+                            <td>12g</td>
+                            <td>24%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="allergen-info">
+                    <h4>Allergen Information</h4>
+                    <p>This product contains:</p>
+                    <span class="allergen-tag">Wheat</span>
+                    <span class="allergen-tag">Milk</span>
+                    <span class="allergen-tag">Eggs</span>
+                    
+                    <p style="margin-top: 15px;">May contain traces of: <span class="nutrition-highlight">Soy</span></p>
+                    <p>Prepared in a kitchen that also handles: <span class="nutrition-highlight">Nuts, Sesame</span></p>
+                </div>
+                
+                <p><small>*Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.</small></p>
+            </div>
+            
+            <div class="food-nutrition">
+                <h3>Sandwich</h3>
+                <div class="food-menu-img" style="max-width: 200px; margin: 15px 0;">
+                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrient</th>
+                            <th>Per Serving</th>
+                            <th>% Daily Value*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Calories</td>
+                            <td>350 kcal</td>
+                            <td>18%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Fat</td>
+                            <td>12g</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td>Saturated Fat</td>
+                            <td>3.5g</td>
+                            <td>18%</td>
+                        </tr>
+                        <tr>
+                            <td>Trans Fat</td>
+                            <td>0g</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td>Cholesterol</td>
+                            <td>25mg</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td>Sodium</td>
+                            <td>720mg</td>
+                            <td>31%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Carbohydrate</td>
+                            <td>45g</td>
+                            <td>16%</td>
+                        </tr>
+                        <tr>
+                            <td>Dietary Fiber</td>
+                            <td>3g</td>
+                            <td>11%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Sugars</td>
+                            <td>5g</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Protein</td>
+                            <td>15g</td>
+                            <td>30%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="allergen-info">
+                    <h4>Allergen Information</h4>
+                    <p>This product contains:</p>
+                    <span class="allergen-tag">Wheat</span>
+                    <span class="allergen-tag">Milk</span>
+                    <span class="allergen-tag">Eggs</span>
+                    <span class="allergen-tag">Mustard</span>
+                    
+                    <p style="margin-top: 15px;">May contain traces of: <span class="nutrition-highlight">Soy, Sesame</span></p>
+                </div>
+            </div>
+            
+            <div class="food-nutrition">
+                <h3>Burger</h3>
+                <div class="food-menu-img" style="max-width: 200px; margin: 15px 0;">
+                    <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrient</th>
+                            <th>Per Serving</th>
+                            <th>% Daily Value*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Calories</td>
+                            <td>420 kcal</td>
+                            <td>21%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Fat</td>
+                            <td>18g</td>
+                            <td>23%</td>
+                        </tr>
+                        <tr>
+                            <td>Saturated Fat</td>
+                            <td>6g</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>Trans Fat</td>
+                            <td>0.5g</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cholesterol</td>
+                            <td>45mg</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td>Sodium</td>
+                            <td>680mg</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Carbohydrate</td>
+                            <td>40g</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td>Dietary Fiber</td>
+                            <td>2g</td>
+                            <td>7%</td>
+                        </tr>
+                        <tr>
+                            <td>Total Sugars</td>
+                            <td>6g</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Protein</td>
+                            <td>20g</td>
+                            <td>40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="allergen-info">
+                    <h4>Allergen Information</h4>
+                    <p>This product contains:</p>
+                    <span class="allergen-tag">Wheat</span>
+                    <span class="allergen-tag">Milk</span>
+                    <span class="allergen-tag">Eggs</span>
+                    <span class="allergen-tag">Sesame</span>
+                    
+                    <p style="margin-top: 15px;">Prepared in a kitchen that also handles: <span class="nutrition-highlight">Nuts, Soy, Mustard</span></p>
+                </div>
+            </div>
+            
+            <div class="allergen-legend">
+                <h3>Allergen Legend</h3>
+                <p>We use the following allergen codes in our menu:</p>
+                <ul>
+                    <li><strong>W</strong> - Contains Wheat/Gluten</li>
+                    <li><strong>M</strong> - Contains Milk/Dairy</li>
+                    <li><strong>E</strong> - Contains Eggs</li>
+                    <li><strong>S</strong> - Contains Soy</li>
+                    <li><strong>N</strong> - Contains Nuts</li>
+                    <li><strong>Se</strong> - Contains Sesame</li>
+                    <li><strong>Mu</strong> - Contains Mustard</li>
+                </ul>
+                
+                <div class="important-note">
+                    <h4>Important Note</h4>
+                    <p>While we make every effort to identify ingredients that may cause allergic reactions, there is always a risk of cross-contamination in our kitchen. We cannot guarantee that any item is completely free of allergens. Customers with severe allergies should exercise judgment when ordering.</p>
+                    <p>Nutritional values are approximate and based on standard recipes. Actual values may vary depending on specific ingredients used and customization of your order.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Nutrition Info Section End -->
+
+    <!-- Footer Section Start -->
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="text-center">
+                    <h3>About Us</h3><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat officia, temporibus expedita dicta eligendi harum architecto fugiat sint, laudantium omnis animi. Voluptas praesentium maiores minima pariatur necessitatibus consequuntur, similique assumenda.</p>
+                </div>
+                <div class="texr-center">
+                    <h3>Site Map</h3><br>
+                    <div class="site-links">
+                        <a href="categories.html">Categories</a>
+                        <a href="foods.html">Foods</a>
+                        <a href="nutrition.html">Nutrition Info</a>
+                        <a href="order.html">Order</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="login.html">Login</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <h3>Social Links</h3><br>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section End -->
+
+    <!-- Copyright Section start -->
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Design By <a href="#">Rutika❤️</a></p>
+        </div>
+        <a id="back-to-top" class="btn-primary">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </section>
+    <!-- Copyright Section End -->
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- Jquery UI -->
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <!-- Custom JS -->
+    <script src="js/custom.js"></script>
+</body>
+</html>

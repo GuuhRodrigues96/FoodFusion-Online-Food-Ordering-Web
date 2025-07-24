@@ -841,6 +841,18 @@ details p {
   font-size: 1.2rem;
 }
 
+/* Adicionar ao arquivo style.css */
+.nutrition-link {
+    display: block;
+    color: #e91e63;
+    font-size: 0.9em;
+    margin: 8px 0;
+    text-decoration: none;
+}
+
+.nutrition-link:hover {
+    text-decoration: underline;
+}
 
 
 
