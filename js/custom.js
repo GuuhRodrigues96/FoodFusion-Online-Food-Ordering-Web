@@ -140,4 +140,29 @@ searchInput.addEventListener('input', () => {
      } 
 });
 
+// Dark Mode Toggle
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
+const themeLabel = document.getElementById('theme-label');
 
+if (currentTheme) {
+    document.body.classList.add(currentTheme);
+    if (currentTheme === 'dark-mode') {
+        toggleSwitch.checked = true;
+        themeLabel.textContent = 'Modo Claro';
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+        themeLabel.textContent = 'Modo Claro';
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', '');
+        themeLabel.textContent = 'Modo Escuro';
+    }
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
