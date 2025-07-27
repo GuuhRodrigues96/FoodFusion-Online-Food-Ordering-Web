@@ -1,39 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Food Delivery Website</title>
-    <!-- Favicon -->
+    <title>Site de Delivery de Comida Online</title>
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
-    <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <!-- Hover CSS -->
     <link rel="stylesheet" href="css/hover-min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation Section Start -->
     <header class="navbar">
         <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
             <div class="container">
-                <!-- logo -->
                 <div class="logo">
                     <a href="index.html" title="Logo">
                         <img src="img/logo.svg" alt="Logo" class="img-responsive">
                     </a>
                 </div>
-                <!-- Main Menu -->
                 <div class="menu text-right">
                     <ul>
-                        <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
-                        <li><a class="hvr-underline-from-center" href="categories.html">Categories</a></li>
-                        <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
-                        <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>                       
-                        <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
-                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
+                        <li><a class="hvr-underline-from-center" href="index.html">Início</a></li>
+                        <li><a class="hvr-underline-from-center" href="categories.html">Categorias</a></li>
+                        <li><a class="hvr-underline-from-center" href="foods.html">Cardápio</a></li>
+                        <li><a class="hvr-underline-from-center" href="nutrition.html">Info. Nutricional</a></li>                        
+                        <li><a class="hvr-underline-from-center" href="order.html">Pedido</a></li>
+                        <li><a class="hvr-underline-from-center" href="contact.html">Contato</a></li>
                         <li><a class="hvr-underline-from-center" href="login.html">Login</a></li>
 
                         <li>
@@ -42,47 +35,47 @@
                                 <span class="badge">4</span>
                             </a>
                             <div id="cart-content" class="cart-content">
-                                <h3 class="text-center">Shopping Cart</h3>
+                                <h3 class="text-center">Carrinho de Compras</h3>
                                 <table class="cart-table" border="0">
                                     <tr>
-                                        <th>Food</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
+                                        <th>Item</th>
+                                        <th>Nome</th>
+                                        <th>Preço</th>
+                                        <th>Qtd.</th>
                                         <th>Total</th>
-                                        <th>Action</th>
+                                        <th>Ação</th>
                                     </tr>
                                     <tr>
-                                        <td><img src="img/food/p1.jpg" alt="Food"></td>
+                                        <td><img src="img/food/p1.jpg" alt="Comida"></td>
                                         <td>Pizza</td>
-                                        <td>&#8377; 8.00</td>
+                                        <td>R$ 45,00</td>
                                         <td>1</td>
-                                        <td>&#8377; 8.00</td>
+                                        <td>R$ 45,00</td>
                                         <td><a href="#" class="btn-delete">&times;</a></td>
                                     </tr>
                                     <tr>
-                                        <td><img src="img/food/s1.jpg" alt="Food"></td>
-                                        <td>Sandwich</td>
-                                        <td>&#8377; 8.00</td>
+                                        <td><img src="img/food/s1.jpg" alt="Comida"></td>
+                                        <td>Sanduíche</td>
+                                        <td>R$ 22,50</td>
                                         <td>1</td>
-                                        <td>&#8377; 8.00</td>
+                                        <td>R$ 22,50</td>
                                         <td><a href="#" class="btn-delete">&times;</a></td>
                                     </tr>
                                     <tr>
-                                        <td><img src="img/food/b1.jpg" alt="Food"></td>
-                                        <td>Burder</td>
-                                        <td>&#8377; 8.00</td>
+                                        <td><img src="img/food/b1.jpg" alt="Comida"></td>
+                                        <td>Hambúrguer</td>
+                                        <td>R$ 30,00</td>
                                         <td>1</td>
-                                        <td>&#8377; 8.00</td>
+                                        <td>R$ 30,00</td>
                                         <td><a href="#" class="btn-delete">&times;</a></td>
                                     </tr>
                                     <tr>
                                         <th colspan="4">Total</th>
-                                        <th>&#8377;24.00</th>
+                                        <th>R$ 97,50</th>
                                         <th></th>
                                     </tr>
                                 </table>
-                                <a href="order.html" class="btn-primary">Confirm Order</a>
+                                <a href="order.html" class="btn-primary">Confirmar Pedido</a>
                             </div>
                         </li>
 
@@ -91,117 +84,99 @@
             </div>
         </nav>
     </header>
-    <!-- Navigation Section End -->
-
-    <!-- Food Order Section Start -->
     <section class="order">
         <div class="container">
-            <h2 class="text-center">Fill this form to confirm your order.</h2>
+            <h2 class="text-center">Preencha este formulário para confirmar seu pedido.</h2>
             <table class="tbl-full" border="0">
                 <tr>
-                    <th>S.N.</th>
-                    <th>Food</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Qty</th>
+                    <th>Nº</th>
+                    <th>Item</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Qtd.</th>
                     <th>Total</th>
-                    <th>Action</th>
+                    <th>Ação</th>
                 </tr>
                 <tr>
                     <td>1</td>
-                    <td><img src="img/food/p1.jpg" alt="Food"></td>
+                    <td><img src="img/food/p1.jpg" alt="Comida"></td>
                     <td>Pizza</td>
-                    <td>&#8377; 8.00</td>
+                    <td>R$ 45,00</td>
                     <td>1</td>
-                    <td>&#8377;8.00</td>
+                    <td>R$ 45,00</td>
                     <td><a href="#" class="btn-delete">&times;</a></td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td><img src="img/food/s1.jpg" alt="Food"></td>
-                    <td>Sandwich</td>
-                    <td>&#8377; 8.00</td>
+                    <td><img src="img/food/s1.jpg" alt="Comida"></td>
+                    <td>Sanduíche</td>
+                    <td>R$ 22,50</td>
                     <td>1</td>
-                    <td>&#8377; 8.00</td>
+                    <td>R$ 22,50</td>
                     <td><a href="#" class="btn-delete">&times;</a></td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td><img src="img/food/b1.jpg" alt="Food"></td>
-
-                    <td>Burder</td>
-                    <td>&#8377; 8.00</td>
-
-                    <td>Burger</td>
-                    <td>$ 8.00</td>
-
+                    <td><img src="img/food/b1.jpg" alt="Comida"></td>
+                    <td>Hambúrguer</td>
+                    <td>R$ 30,00</td>
                     <td>1</td>
-                    <td>&#8377; 8.00</td>
+                    <td>R$ 30,00</td>
                     <td><a href="#" class="btn-delete">&times;</a></td>
                 </tr>
                 <tr>
                     <th colspan="5">Total</th>
-                    <th>&#8377;24.00</th>
+                    <th>R$ 97,50</th>
                     <th></th>
                 </tr>
             </table>
 
-            <!-- ✅ Updated Form -->
             <form class="form" id="orderForm">
                 <fieldset>
-                    <legend>Delivery Details</legend>
+                    <legend>Detalhes da Entrega</legend>
 
-                    <p class="label">Full Name</p>
-                    <input type="text" placeholder="Enter your name..." name="fullname" required>
+                    <p class="label">Nome Completo</p>
+                    <input type="text" placeholder="Digite seu nome..." name="fullname" required>
 
-                    <p class="label">Phone Number</p>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone..." maxlength="10" pattern="\d{10}" required>
+                    <p class="label">Número de Telefone</p>
+                    <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone..." required>
 
-                    <p class="label">Email</p>
-                    <input type="email" placeholder="Enter your email..." name="email" required>
+                    <p class="label">E-mail</p>
+                    <input type="email" placeholder="Digite seu e-mail..." name="email" required>
 
-                    <p class="label">Address</p>
-                    <input type="text" placeholder="Enter your address..." name="address" required>
+                    <p class="label">Endereço</p>
+                    <input type="text" placeholder="Digite seu endereço..." name="address" required>
 
-                    <input type="submit" value="Confirm Order" class="btn-primary">
+                    <input type="submit" value="Confirmar Pedido" class="btn-primary">
                 </fieldset>
             </form>
 
-            <!-- ✅ Confirmation Message -->
             <p id="confirmationMessage" style="display:none; color: green; font-weight: bold; margin-top: 10px;">
-                ✅ Your order has been placed successfully!
+                ✅ Seu pedido foi realizado com sucesso!
             </p>
         </div>
     </section>
-    <!-- Food Order Section End -->
-
-    <!-- Footer Section Start -->
     <section class="footer">
         <div class="container text-center">
-            <p>All rights reserved. Design By <a href="#">Rutika❤️</a></p>
+            <p>Todos os direitos reservados. Design por <a href="#">Rutika❤️</a></p>
         </div>
     </section>
-    <!-- Footer Section End -->
-
-    <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!-- Jquery UI -->
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <!-- Custom JS -->
     <script>
-  $(function () {
-    // Phone validation
-    $("#phone").on("input", function () {
-      this.value = this.value.replace(/\D/g, "");
-    });
-
-    // Confirmation message
-    $("#orderForm").on("submit", function (e) {
-      e.preventDefault();
-      $("#confirmationMessage").fadeIn();
-      this.reset();
-    });
+ $(function () {
+  // Phone validation
+  $("#phone").on("input", function () {
+    this.value = this.value.replace(/\D/g, "");
   });
+
+  // Confirmation message
+  $("#orderForm").on("submit", function (e) {
+    e.preventDefault();
+    $("#confirmationMessage").fadeIn();
+    this.reset();
+  });
+ });
 </script>
 
 </body>
