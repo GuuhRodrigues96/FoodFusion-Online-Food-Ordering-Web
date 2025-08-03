@@ -5,27 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Food Delivery Website</title>
-    <!-- Favicon -->
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
-    <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <!-- Hover CSS -->
     <link rel="stylesheet" href="css/hover-min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation Section Start -->
     <header class="navbar">
         <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
             <div class="container">
-                <!-- logo -->
                 <div class="logo">
                     <a href="index.html" title="Logo">
                         <img src="img/logo.svg" alt="Logo" class="img-responsive">
                     </a>
                 </div>
-                <!-- Main Menu -->
                 <div class="menu text-right">
                     <ul>
                         <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
@@ -89,23 +82,17 @@
             </div>
         </nav>
     </header>
-    <!-- Navigation Section End -->
-
-    <!-- Food Search Section Start -->
     <section class="food-search text-center" >
         <div class="container">
             <form action="food-search.html" method="GET">
                 <div class="search-wrapper">
                     <input type="search" id="search-input" name="query" placeholder="Search for food..." autocomplete="off" required>
-                    <div id="suggestions"></div>   
+                    <div id="suggestions"></div>  
                     <input type="submit" value="Search" class="btn-primary"> 
-                </div>                 
+                </div>                  
             </form>
         </div>
     </section>
-    <!-- Food Search Section End -->
-
-    <!-- Foods Section Start -->
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
@@ -204,13 +191,6 @@
             </div>
         </div>
     </section>
-    <!-- Foods Section End -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    </head>
-<body>
     <section class="footer">
         <div class="container">
             <div class="grid-3">
@@ -275,5 +255,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="js/custom.js"></script>
-</body>
+    
+    <audio id="cart-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" preload="auto"></audio>
+
+    <script>
+    $(document).ready(function(){
+        // Seleciona todos os botões "Add To Cart"
+        $('.food-menu-box input[type="submit"][value="Add To Cart"]').on('click', function(e) {
+            // Previne o comportamento padrão do formulário (que é recarregar a página)
+            e.preventDefault(); 
+            
+            // Pega o elemento de áudio e o toca
+            $('#cart-sound').get(0).play();
+
+            // Futuramente, você pode adicionar aqui a lógica real para adicionar o item ao carrinho
+            console.log('Item adicionado ao carrinho! (Som executado)'); 
+        });
+    });
+    </script>
+
+    </body>
 </html>

@@ -14,6 +14,25 @@ $(function () {
   $("#shopping-cart").on("click", function () {
     $("#cart-content").toggle("blind", "", 500);
   });
+  
+  // ==========================================================
+  //  NOVO: Lógica para tocar o som ao adicionar item ao carrinho
+  // ==========================================================
+  $('.food-menu-box input[type="submit"][value="Add To Cart"]').on('click', function(e) {
+    // Previne o comportamento padrão do formulário (que é recarregar a página)
+    e.preventDefault(); 
+    
+    // Pega o elemento de áudio pelo ID e o toca
+    const cartSound = document.getElementById('cart-sound');
+    if (cartSound) {
+        cartSound.play();
+    }
+
+    // Você pode adicionar outras ações aqui, como mostrar uma notificação.
+  });
+  // ==========================================================
+  // FIM DA NOVA LÓGICA
+  // ==========================================================
 
   // Back-To-Top Button JS
   $("#back-to-top").click(function (event) {
