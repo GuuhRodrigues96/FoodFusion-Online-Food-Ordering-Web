@@ -28,6 +28,19 @@ Welcome to **FoodFusion**, an online food ordering platform that blends traditio
 </table>
 
 ---
+## Índice
+* [Sobre o Projeto](#-about-foodfusion)
+* [Características](#-features)
+* [Tecnologias](#-tech-stack)
+* [Iniciando](#-getting-started)
+* [Como Contribuir](#how-to-contribute)
+* [Nossos Contribuidores](#our-contributors-)
+* [Demonstre Seu Apoio](#show-your-support)
+* [Stargazers ❤️](#stargazers-️)
+* [Forkers ❤️](#forkers-️)
+* [Conecte-se Comigo](#connect-with-me)
+
+---
 
 ## 🍽️ About FoodFusion
 
