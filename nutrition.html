@@ -64,6 +64,41 @@
             font-weight: bold;
             color: #e91e63;
         }
+        
+        /* Estilos para os botões de rolagem */
+        .scroll-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+        
+        .scroll-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff6b81;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-btn:hover {
+            background: #ff4757;
+            transform: scale(1.1);
+        }
+        
+        #back-to-top {
+            bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -439,8 +474,42 @@
             <i class="fa fa-angle-double-up"></i>
         </a>
     </section>
+    
+    <!-- Botões de rolagem -->
+    <div class="scroll-buttons">
+        <button id="scroll-up-btn" class="scroll-btn" title="Rolar para cima">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+        <button id="scroll-down-btn" class="scroll-btn" title="Rolar para baixo">
+            <i class="fa fa-arrow-down"></i>
+        </button>
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="js/custom.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+        // Botão de rolar para cima
+        $('#scroll-up-btn').click(function(){
+            $('html, body').animate({scrollTop: 0}, 800);
+        });
+        
+        // Botão de rolar para baixo
+        $('#scroll-down-btn').click(function(){
+            $('html, body').animate({scrollTop: $(document).height()}, 800);
+        });
+        
+        // Mostrar/ocultar botões de rolagem baseado na posição da página
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 200) {
+                $('.scroll-buttons').fadeIn();
+            } else {
+                $('.scroll-buttons').fadeOut();
+            }
+        });
+    });
+    </script>
 </body>
 </html>
