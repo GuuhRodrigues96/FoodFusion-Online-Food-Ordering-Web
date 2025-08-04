@@ -1,5 +1,10 @@
 # FoodFusion 🍱
 
+<p align="center">
+  <img src="img/logo.svg" alt="Logotipo do FoodFusion" width="200">
+</p>
+
+
 Welcome to **FoodFusion**, an online food ordering platform that blends traditional Indian cuisine with modern convenience. Designed for students and professionals, it offers customizable, nutritious, and budget-friendly meal plans with doorstep delivery.
 
 <table align="center">
