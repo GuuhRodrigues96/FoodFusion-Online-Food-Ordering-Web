@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="css/hover-min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilo adicional para os botões de deletar */
+        .btn-delete {
+            color: #e91e63;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-delete:hover {
+            color: #c2185b;
+            transform: scale(1.2);
+        }
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -26,13 +41,14 @@
                         <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
                         <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>
                         <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
-                        <li><a class="hvr-underline-from-center" href="about.html">About Us</a></li> <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
+                        <li><a class="hvr-underline-from-center" href="about.html">About Us</a></li>
+                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
                         <li><a class="hvr-underline-from-center" href="login.html">Login</a></li>
 
                         <li>
                             <a id="shopping-cart" class="shopping-cart">
                                 <i class="fa fa-cart-arrow-down"></i>
-                                <span class="badge">4</span>
+                                <span class="badge">3</span>
                             </a>
                             <div id="cart-content" class="cart-content">
                                 <h3 class="text-center">Carrinho de Compras</h3>
@@ -51,7 +67,7 @@
                                         <td>R$ 45,00</td>
                                         <td>1</td>
                                         <td>R$ 45,00</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
+                                        <td><a href="#" class="btn-delete" data-price="45.00">&times;</a></td>
                                     </tr>
                                     <tr>
                                         <td><img src="img/food/s1.jpg" alt="Comida"></td>
@@ -59,7 +75,7 @@
                                         <td>R$ 22,50</td>
                                         <td>1</td>
                                         <td>R$ 22,50</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
+                                        <td><a href="#" class="btn-delete" data-price="22.50">&times;</a></td>
                                     </tr>
                                     <tr>
                                         <td><img src="img/food/b1.jpg" alt="Comida"></td>
@@ -67,27 +83,27 @@
                                         <td>R$ 30,00</td>
                                         <td>1</td>
                                         <td>R$ 30,00</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
+                                        <td><a href="#" class="btn-delete" data-price="30.00">&times;</a></td>
                                     </tr>
                                     <tr>
                                         <th colspan="4">Total</th>
-                                        <th>R$ 97,50</th>
+                                        <th id="cart-total">R$ 97,50</th>
                                         <th></th>
                                     </tr>
                                 </table>
                                 <a href="order.html" class="btn-primary">Confirmar Pedido</a>
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    
     <section class="order">
         <div class="container">
             <h2 class="text-center">Preencha este formulário para confirmar seu pedido.</h2>
-            <table class="tbl-full" border="0">
+            <table class="tbl-full" border="0" id="order-table">
                 <tr>
                     <th>Nº</th>
                     <th>Item</th>
@@ -97,7 +113,7 @@
                     <th>Total</th>
                     <th>Ação</th>
                 </tr>
-                <tr>
+                <tr class="order-item" data-price="45.00">
                     <td>1</td>
                     <td><img src="img/food/p1.jpg" alt="Comida"></td>
                     <td>Pizza</td>
@@ -106,7 +122,7 @@
                     <td>R$ 45,00</td>
                     <td><a href="#" class="btn-delete">&times;</a></td>
                 </tr>
-                <tr>
+                <tr class="order-item" data-price="22.50">
                     <td>2</td>
                     <td><img src="img/food/s1.jpg" alt="Comida"></td>
                     <td>Sanduíche</td>
@@ -115,7 +131,7 @@
                     <td>R$ 22,50</td>
                     <td><a href="#" class="btn-delete">&times;</a></td>
                 </tr>
-                <tr>
+                <tr class="order-item" data-price="30.00">
                     <td>3</td>
                     <td><img src="img/food/b1.jpg" alt="Comida"></td>
                     <td>Hambúrguer</td>
@@ -126,7 +142,7 @@
                 </tr>
                 <tr>
                     <th colspan="5">Total</th>
-                    <th>R$ 97,50</th>
+                    <th id="order-total">R$ 97,50</th>
                     <th></th>
                 </tr>
             </table>
@@ -158,7 +174,8 @@
     </section>
     
     <section class="footer">
-        </section>
+        <!-- Conteúdo do footer -->
+    </section>
     
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -175,6 +192,51 @@
             $("#confirmationMessage").fadeIn();
             this.reset();
         });
+
+        // Função para formatar valor monetário
+        function formatCurrency(value) {
+            return 'R$ ' + value.toFixed(2).replace('.', ',');
+        }
+
+        // Função para calcular o total
+        function calculateTotal() {
+            let total = 0;
+            $('.order-item').each(function() {
+                const price = parseFloat($(this).data('price'));
+                total += price;
+            });
+            return total;
+        }
+
+        // Função para atualizar o total exibido
+        function updateTotal() {
+            const total = calculateTotal();
+            $('#order-total').text(formatCurrency(total));
+            $('#cart-total').text(formatCurrency(total));
+            
+            // Atualizar contador do carrinho
+            const itemCount = $('.order-item').length;
+            $('.badge').text(itemCount);
+        }
+
+        // Remover item e atualizar total
+        $(document).on('click', '.btn-delete', function(e) {
+            e.preventDefault();
+            
+            // Remover a linha do item
+            $(this).closest('tr').remove();
+            
+            // Atualizar o total
+            updateTotal();
+            
+            // Atualizar números das linhas
+            $('.order-item').each(function(index) {
+                $(this).find('td:first').text(index + 1);
+            });
+        });
+
+        // Inicializar o total
+        updateTotal();
     });
     </script>
 </body>
