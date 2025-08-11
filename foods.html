@@ -59,6 +59,77 @@
             color: #c2185b;
             transform: scale(1.2);
         }
+        
+        /* Estilos para o sistema de classificação */
+        .rating-system {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .star-rating {
+            display: flex;
+            direction: rtl; /* Para permitir a seleção de estrelas da direita para a esquerda */
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            color: #ddd;
+            font-size: 24px;
+            padding: 0 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffc107;
+        }
+        
+        .average-rating {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .average-rating .stars {
+            color: #ffc107;
+            margin-right: 5px;
+        }
+        
+        .average-rating .count {
+            color: #888;
+            font-size: 12px;
+        }
+        
+        .rating-form {
+            display: none;
+            margin-top: 5px;
+        }
+        
+        .rating-form.active {
+            display: block;
+        }
+        
+        .rate-btn {
+            background: none;
+            border: none;
+            color: #ff6b81;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: underline;
+            padding: 0;
+        }
+        
+        .rate-btn:hover {
+            color: #ff4757;
+        }
     </style>
 </head>
 <body>
@@ -77,6 +148,7 @@
                         <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
                         <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>
                         <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
+                        <li><a class="hvr-underline-from-center" href="depoimentos.html">Avaliações</a></li>                        
                         <li><a class="hvr-underline-from-center" href="about.html">About Us</a></li> 
                         <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
                         <li><a class="hvr-underline-from-center" href="privacy.html">Privacidade</a></li>                        
@@ -163,6 +235,33 @@
                             <p class="food-price">&#8377;8.00</p>
                             <p class="food-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi porro.</p>
                             <a href="nutrition.html#pizza" class="nutrition-link">View Nutrition Info</a>
+                            
+                            <!-- Sistema de classificação -->
+                            <div class="rating-system">
+                                <div class="average-rating" data-item="pizza">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="value">5.0</span>
+                                    <span class="count">(24)</span>
+                                </div>
+                                <button class="rate-btn" onclick="toggleRatingForm(this, event)">Rate this item</button>
+                                <div class="rating-form">
+                                    <div class="star-rating">
+                                        <input type="radio" id="pizza-star5" name="pizza-rating" value="5">
+                                        <label for="pizza-star5" title="5 stars">★</label>
+                                        <input type="radio" id="pizza-star4" name="pizza-rating" value="4">
+                                        <label for="pizza-star4" title="4 stars">★</label>
+                                        <input type="radio" id="pizza-star3" name="pizza-rating" value="3">
+                                        <label for="pizza-star3" title="3 stars">★</label>
+                                        <input type="radio" id="pizza-star2" name="pizza-rating" value="2">
+                                        <label for="pizza-star2" title="2 stars">★</label>
+                                        <input type="radio" id="pizza-star1" name="pizza-rating" value="1">
+                                        <label for="pizza-star1" title="1 star">★</label>
+                                    </div>
+                                    <button type="button" class="btn-primary btn-sm" onclick="submitRating(this, 'pizza')">Submit</button>
+                                    <button type="button" class="btn-secondary btn-sm" onclick="cancelRating(this)">Cancel</button>
+                                </div>
+                            </div>
+                            
                             <input type="number" value="1" min="1">
                             <input type="submit" class="btn-primary" value="Add To Cart">
                         </div>
@@ -178,6 +277,33 @@
                             <p class="food-price">&#8377;8.00</p>
                             <p class="food-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi porro.</p>
                             <a href="nutrition.html#sandwich" class="nutrition-link">View Nutrition Info</a>
+                            
+                            <!-- Sistema de classificação -->
+                            <div class="rating-system">
+                                <div class="average-rating" data-item="sandwich">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="value">4.2</span>
+                                    <span class="count">(18)</span>
+                                </div>
+                                <button class="rate-btn" onclick="toggleRatingForm(this, event)">Rate this item</button>
+                                <div class="rating-form">
+                                    <div class="star-rating">
+                                        <input type="radio" id="sandwich-star5" name="sandwich-rating" value="5">
+                                        <label for="sandwich-star5" title="5 stars">★</label>
+                                        <input type="radio" id="sandwich-star4" name="sandwich-rating" value="4">
+                                        <label for="sandwich-star4" title="4 stars">★</label>
+                                        <input type="radio" id="sandwich-star3" name="sandwich-rating" value="3">
+                                        <label for="sandwich-star3" title="3 stars">★</label>
+                                        <input type="radio" id="sandwich-star2" name="sandwich-rating" value="2">
+                                        <label for="sandwich-star2" title="2 stars">★</label>
+                                        <input type="radio" id="sandwich-star1" name="sandwich-rating" value="1">
+                                        <label for="sandwich-star1" title="1 star">★</label>
+                                    </div>
+                                    <button type="button" class="btn-primary btn-sm" onclick="submitRating(this, 'sandwich')">Submit</button>
+                                    <button type="button" class="btn-secondary btn-sm" onclick="cancelRating(this)">Cancel</button>
+                                </div>
+                            </div>
+                            
                             <input type="number" value="1" min="1">
                             <input type="submit" class="btn-primary" value="Add To Cart">
                         </div>
@@ -193,6 +319,33 @@
                             <p class="food-price">&#8377;8.00</p>
                             <p class="food-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi porro.</p>
                             <a href="nutrition.html#burger" class="nutrition-link">View Nutrition Info</a>
+                            
+                            <!-- Sistema de classificação -->
+                            <div class="rating-system">
+                                <div class="average-rating" data-item="burger">
+                                    <span class="stars">★★★☆☆</span>
+                                    <span class="value">3.5</span>
+                                    <span class="count">(12)</span>
+                                </div>
+                                <button class="rate-btn" onclick="toggleRatingForm(this, event)">Rate this item</button>
+                                <div class="rating-form">
+                                    <div class="star-rating">
+                                        <input type="radio" id="burger-star5" name="burger-rating" value="5">
+                                        <label for="burger-star5" title="5 stars">★</label>
+                                        <input type="radio" id="burger-star4" name="burger-rating" value="4">
+                                        <label for="burger-star4" title="4 stars">★</label>
+                                        <input type="radio" id="burger-star3" name="burger-rating" value="3">
+                                        <label for="burger-star3" title="3 stars">★</label>
+                                        <input type="radio" id="burger-star2" name="burger-rating" value="2">
+                                        <label for="burger-star2" title="2 stars">★</label>
+                                        <input type="radio" id="burger-star1" name="burger-rating" value="1">
+                                        <label for="burger-star1" title="1 star">★</label>
+                                    </div>
+                                    <button type="button" class="btn-primary btn-sm" onclick="submitRating(this, 'burger')">Submit</button>
+                                    <button type="button" class="btn-secondary btn-sm" onclick="cancelRating(this)">Cancel</button>
+                                </div>
+                            </div>
+                            
                             <input type="number" value="1" min="1">
                             <input type="submit" class="btn-primary" value="Add To Cart">
                         </div>
@@ -208,6 +361,33 @@
                             <p class="food-price">&#8377;8.00</p>
                             <p class="food-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi porro.</p>
                             <a href="nutrition.html#pizza" class="nutrition-link">View Nutrition Info</a>
+                            
+                            <!-- Sistema de classificação -->
+                            <div class="rating-system">
+                                <div class="average-rating" data-item="pizza">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="value">5.0</span>
+                                    <span class="count">(24)</span>
+                                </div>
+                                <button class="rate-btn" onclick="toggleRatingForm(this, event)">Rate this item</button>
+                                <div class="rating-form">
+                                    <div class="star-rating">
+                                        <input type="radio" id="pizza2-star5" name="pizza2-rating" value="5">
+                                        <label for="pizza2-star5" title="5 stars">★</label>
+                                        <input type="radio" id="pizza2-star4" name="pizza2-rating" value="4">
+                                        <label for="pizza2-star4" title="4 stars">★</label>
+                                        <input type="radio" id="pizza2-star3" name="pizza2-rating" value="3">
+                                        <label for="pizza2-star3" title="3 stars">★</label>
+                                        <input type="radio" id="pizza2-star2" name="pizza2-rating" value="2">
+                                        <label for="pizza2-star2" title="2 stars">★</label>
+                                        <input type="radio" id="pizza2-star1" name="pizza2-rating" value="1">
+                                        <label for="pizza2-star1" title="1 star">★</label>
+                                    </div>
+                                    <button type="button" class="btn-primary btn-sm" onclick="submitRating(this, 'pizza')">Submit</button>
+                                    <button type="button" class="btn-secondary btn-sm" onclick="cancelRating(this)">Cancel</button>
+                                </div>
+                            </div>
+                            
                             <input type="number" value="1" min="1">
                             <input type="submit" class="btn-primary" value="Add To Cart">
                         </div>
@@ -223,6 +403,33 @@
                             <p class="food-price">&#8377;8.00</p>
                             <p class="food-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi porro.</p>
                             <a href="nutrition.html#sandwich" class="nutrition-link">View Nutrition Info</a>
+                            
+                            <!-- Sistema de classificação -->
+                            <div class="rating-system">
+                                <div class="average-rating" data-item="sandwich">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="value">4.2</span>
+                                    <span class="count">(18)</span>
+                                </div>
+                                <button class="rate-btn" onclick="toggleRatingForm(this, event)">Rate this item</button>
+                                <div class="rating-form">
+                                    <div class="star-rating">
+                                        <input type="radio" id="sandwich2-star5" name="sandwich2-rating" value="5">
+                                        <label for="sandwich2-star5" title="5 stars">★</label>
+                                        <input type="radio" id="sandwich2-star4" name="sandwich2-rating" value="4">
+                                        <label for="sandwich2-star4" title="4 stars">★</label>
+                                        <input type="radio" id="sandwich2-star3" name="sandwich2-rating" value="3">
+                                        <label for="sandwich2-star3" title="3 stars">★</label>
+                                        <input type="radio" id="sandwich2-star2" name="sandwich2-rating" value="2">
+                                        <label for="sandwich2-star2" title="2 stars">★</label>
+                                        <input type="radio" id="sandwich2-star1" name="sandwich2-rating" value="1">
+                                        <label for="sandwich2-star1" title="1 star">★</label>
+                                    </div>
+                                    <button type="button" class="btn-primary btn-sm" onclick="submitRating(this, 'sandwich')">Submit</button>
+                                    <button type="button" class="btn-secondary btn-sm" onclick="cancelRating(this)">Cancel</button>
+                                </div>
+                            </div>
+                            
                             <input type="number" value="1" min="1">
                             <input type="submit" class="btn-primary" value="Add To Cart">
                         </div>
@@ -238,6 +445,33 @@
                             <p class="food-price">&#8377;8.00</p>
                             <p class="food-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi porro.</p>
                             <a href="nutrition.html#burger" class="nutrition-link">View Nutrition Info</a>
+                            
+                            <!-- Sistema de classificação -->
+                            <div class="rating-system">
+                                <div class="average-rating" data-item="burger">
+                                    <span class="stars">★★★☆☆</span>
+                                    <span class="value">3.5</span>
+                                    <span class="count">(12)</span>
+                                </div>
+                                <button class="rate-btn" onclick="toggleRatingForm(this, event)">Rate this item</button>
+                                <div class="rating-form">
+                                    <div class="star-rating">
+                                        <input type="radio" id="burger2-star5" name="burger2-rating" value="5">
+                                        <label for="burger2-star5" title="5 stars">★</label>
+                                        <input type="radio" id="burger2-star4" name="burger2-rating" value="4">
+                                        <label for="burger2-star4" title="4 stars">★</label>
+                                        <input type="radio" id="burger2-star3" name="burger2-rating" value="3">
+                                        <label for="burger2-star3" title="3 stars">★</label>
+                                        <input type="radio" id="burger2-star2" name="burger2-rating" value="2">
+                                        <label for="burger2-star2" title="2 stars">★</label>
+                                        <input type="radio" id="burger2-star1" name="burger2-rating" value="1">
+                                        <label for="burger2-star1" title="1 star">★</label>
+                                    </div>
+                                    <button type="button" class="btn-primary btn-sm" onclick="submitRating(this, 'burger')">Submit</button>
+                                    <button type="button" class="btn-secondary btn-sm" onclick="cancelRating(this)">Cancel</button>
+                                </div>
+                            </div>
+                            
                             <input type="number" value="1" min="1">
                             <input type="submit" class="btn-primary" value="Add To Cart">
                         </div>
@@ -325,6 +559,7 @@
     <script src="js/custom.js"></script>
     
     <audio id="cart-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" preload="auto"></audio>
+    <audio id="rating-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" preload="auto"></audio>
 
     <script>
     // Função para remover item do carrinho e atualizar o total
@@ -361,6 +596,110 @@
     function updateCartCount() {
         const itemCount = document.querySelectorAll('.cart-item').length;
         document.querySelector('.badge').textContent = itemCount;
+    }
+    
+    // Função para alternar o formulário de classificação
+    function toggleRatingForm(button, event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const ratingSystem = button.closest('.rating-system');
+        const ratingForm = ratingSystem.querySelector('.rating-form');
+        const averageRating = ratingSystem.querySelector('.average-rating');
+        
+        if (ratingForm.classList.contains('active')) {
+            ratingForm.classList.remove('active');
+            averageRating.style.display = 'flex';
+            button.textContent = 'Rate this item';
+        } else {
+            ratingForm.classList.add('active');
+            averageRating.style.display = 'none';
+            button.textContent = 'Hide rating';
+        }
+    }
+    
+    // Função para cancelar a classificação
+    function cancelRating(button) {
+        const ratingForm = button.closest('.rating-form');
+        const ratingSystem = ratingForm.closest('.rating-system');
+        const averageRating = ratingSystem.querySelector('.average-rating');
+        const rateBtn = ratingSystem.querySelector('.rate-btn');
+        
+        // Desmarca qualquer seleção de estrelas
+        const stars = ratingForm.querySelectorAll('input[type="radio"]');
+        stars.forEach(star => {
+            star.checked = false;
+        });
+        
+        ratingForm.classList.remove('active');
+        averageRating.style.display = 'flex';
+        rateBtn.textContent = 'Rate this item';
+    }
+    
+    // Função para enviar a classificação
+    function submitRating(button, itemId) {
+        const ratingForm = button.closest('.rating-form');
+        const selectedStar = ratingForm.querySelector('input[type="radio"]:checked');
+        
+        if (!selectedStar) {
+            alert('Please select a rating before submitting.');
+            return;
+        }
+        
+        const ratingValue = parseInt(selectedStar.value);
+        const ratingSystem = ratingForm.closest('.rating-system');
+        const averageRating = ratingSystem.querySelector('.average-rating');
+        const rateBtn = ratingSystem.querySelector('.rate-btn');
+        
+        // Aqui você normalmente enviaria os dados para o servidor
+        // Para este exemplo, vamos apenas simular a atualização
+        
+        // Toca o som de confirmação
+        document.getElementById('rating-sound').play();
+        
+        // Atualiza a exibição (simulação)
+        const currentValueElem = averageRating.querySelector('.value');
+        const currentCountElem = averageRating.querySelector('.count');
+        const currentStarsElem = averageRating.querySelector('.stars');
+        
+        // Valores atuais (simulados)
+        let currentValue = parseFloat(currentValueElem.textContent);
+        let currentCount = parseInt(currentCountElem.textContent.replace(/[^\d]/g, ''));
+        
+        // Calcula nova média (simulação)
+        const newCount = currentCount + 1;
+        const newValue = ((currentValue * currentCount) + ratingValue) / newCount;
+        
+        // Atualiza os elementos
+        currentValueElem.textContent = newValue.toFixed(1);
+        currentCountElem.textContent = `(${newCount})`;
+        
+        // Atualiza as estrelas visíveis
+        const fullStars = Math.floor(newValue);
+        const hasHalfStar = (newValue - fullStars) >= 0.5;
+        
+        let starsHTML = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= fullStars) {
+                starsHTML += '★';
+            } else if (i === fullStars + 1 && hasHalfStar) {
+                starsHTML += '☆';
+            } else {
+                starsHTML += '☆';
+            }
+        }
+        currentStarsElem.innerHTML = starsHTML;
+        
+        // Esconde o formulário
+        ratingForm.classList.remove('active');
+        averageRating.style.display = 'flex';
+        rateBtn.textContent = 'Rate this item';
+        
+        // Desmarca a seleção
+        selectedStar.checked = false;
+        
+        // Mostra mensagem de sucesso
+        alert('Thank you for your rating!');
     }
     
     $(document).ready(function(){

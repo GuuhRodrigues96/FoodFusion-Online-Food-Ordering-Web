@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depoimentos - Food Fusion</title>
+    <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos para os botões de rolagem */
+        .scroll-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+        
+        .scroll-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff6b81;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-btn:hover {
+            background: #ff4757;
+            transform: scale(1.1);
+        }
+        
+        #back-to-top {
+            bottom: 20px;
+        }
+        
+        /* Estilo para depoimentos */
+        .testimonials-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .testimonial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .heading-border {
+            width: 100px;
+            height: 3px;
+            background: #ff6b81;
+            margin: 0 auto 30px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .client-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #ff6b81;
+        }
+        
+        .client-info h4 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .client-info p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+            font-size: 16px;
+            margin: 5px 0 10px;
+        }
+        
+        .testimonial-text {
+            color: #555;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-food {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+        }
+        
+        .testimonial-food img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .food-info h5 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .food-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        /* Estilo para o formulário de depoimento */
+        .add-testimonial {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .add-testimonial h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .rating-input {
+            display: flex;
+            direction: rtl;
+        }
+        
+        .rating-input input {
+            display: none;
+        }
+        
+        .rating-input label {
+            color: #ddd;
+            font-size: 28px;
+            padding: 0 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .rating-input input:checked ~ label,
+        .rating-input label:hover,
+        .rating-input label:hover ~ label {
+            color: #ffc107;
+        }
+        
+        .submit-btn {
+            background: #ff6b81;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #ff4757;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" title="Logo">
+                        <img src="img/logo.svg" alt="Logo" class="img-responsive">
+                    </a>
+                </div>
+                <div class="menu text-right">
+                    <ul>
+                        <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
+                        <li><a class="hvr-underline-from-center" href="categories.html">Categories</a></li>
+                        <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
+                        <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>
+                        <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
+                        <li><a class="hvr-underline-from-center" href="about.html">About Us</a></li> 
+                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
+                        <li><a class="hvr-underline-from-center" href="privacy.html">Privacidade</a></li>
+                        <li><a class="hvr-underline-from-center" href="testimonials.html">Depoimentos</a></li>
+                        <li><a class="hvr-underline-from-center" href="login.html">Login</a></li>
+                        <li>
+                            <a id="shopping-cart" class="shopping-cart">
+                                <i class="fa fa-cart-arrow-down"></i>
+                                <span class="badge">3</span>
+                            </a>
+                            <div id="cart-content" class="cart-content">
+                                <h3 class="text-center">Shopping Cart</h3>
+                                <table class="cart-table" border="0" id="cart-items">
+                                    <tr>
+                                        <th>Food</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Qty</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr class="cart-item" data-price="8.00">
+                                        <td><img src="img/food/p1.jpg" alt="Food"></td>
+                                        <td>Pizza</td>
+                                        <td class="item-price">&#8377; 8.00</td>
+                                        <td>1</td>
+                                        <td class="item-total">&#8377; 8.00</td>
+                                        <td><a href="#" class="btn-delete" onclick="removeCartItem(this)">&times;</a></td>
+                                    </tr>
+                                    <tr class="cart-item" data-price="8.00">
+                                        <td><img src="img/food/s1.jpg" alt="Food"></td>
+                                        <td>Sandwich</td>
+                                        <td class="item-price">&#8377; 8.00</td>
+                                        <td>1</td>
+                                        <td class="item-total">&#8377; 8.00</td>
+                                        <td><a href="#" class="btn-delete" onclick="removeCartItem(this)">&times;</a></td>
+                                    </tr>
+                                    <tr class="cart-item" data-price="8.00">
+                                        <td><img src="img/food/b1.jpg" alt="Food"></td>
+                                        <td>Burger</td>
+                                        <td class="item-price">&#8377; 8.00</td>
+                                        <td>1</td>
+                                        <td class="item-total">&#8377; 8.00</td>
+                                        <td><a href="#" class="btn-delete" onclick="removeCartItem(this)">&times;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4">Total</th>
+                                        <th id="cart-total">&#8377; 24.00</th>
+                                        <th></th>
+                                    </tr>
+                                </table>
+                                <a href="order.html" class="btn-primary">Confirm Order</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="testimonials-section">
+        <div class="testimonial-container">
+            <div class="section-title">
+                <h2>Depoimentos dos Clientes</h2>
+                <div class="heading-border"></div>
+                <p>Veja o que nossos clientes dizem sobre nossa comida, atendimento e experiência</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Depoimento 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Ana Carolina Silva</h4>
+                            <p>Cliente desde 2022</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "A pizza de pepperoni é simplesmente incrível! Sempre fresca, com ingredientes de qualidade e entregue rapidamente. O atendimento é sempre muito atencioso e educado. Já recomendei para todos os meus amigos!"
+                    </p>
+                    <div class="testimonial-food">
+                        <img src="img/food/p1.jpg" alt="Pizza">
+                        <div class="food-info">
+                            <h5>Pizza Pepperoni</h5>
+                            <p>Avaliado em 15/05/2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Carlos Eduardo</h4>
+                            <p>Cliente VIP</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">★★★★☆</div>
+                    <p class="testimonial-text">
+                        "O hambúrguer artesanal é meu favorito! Sempre peço quando estou com pressa no trabalho. A entrega nunca atrasa e a comida chega quentinha. A única sugestão seria um pouco mais de molho especial, mas no geral é perfeito!"
+                    </p>
+                    <div class="testimonial-food">
+                        <img src="img/food/b1.jpg" alt="Hambúrguer">
+                        <div class="food-info">
+                            <h5>Hambúrguer Artesanal</h5>
+                            <p>Avaliado em 22/06/2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Juliana Santos</h4>
+                            <p>Cliente frequente</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Adoro pedir no Food Fusion para jantares em família. O atendimento é excelente, sempre muito solícitos quando preciso fazer alguma alteração no pedido. O sanduíche de frango grelhado é o preferido da minha filha!"
+                    </p>
+                    <div class="testimonial-food">
+                        <img src="img/food/s1.jpg" alt="Sanduíche">
+                        <div class="food-info">
+                            <h5>Sanduíche de Frango Grelhado</h5>
+                            <p>Avaliado em 10/07/2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Cliente" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Roberto Almeida</h4>
+                            <p>Novo cliente</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Primeira vez que pedi e fiquei impressionado! A comida chegou antes do prazo, bem embalada e extremamente saborosa. O aplicativo é muito fácil de usar e o sistema de acompanhamento de entrega é perfeito. Com certeza pedirei de novo!"
+                    </p>
+                    <div class="testimonial-food">
+                        <img src="img/food/p1.jpg" alt="Pizza">
+                        <div class="food-info">
+                            <h5>Pizza Margherita</h5>
+                            <p>Avaliado em 05/08/2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Cliente" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Fernanda Oliveira</h4>
+                            <p>Cliente há 1 ano</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">★★★★☆</div>
+                    <p class="testimonial-text">
+                        "Sempre peço o combo de almoço durante a semana. A relação custo-benefício é excelente e a comida é sempre fresca. A única vez que tive um problema, o atendimento ao cliente resolveu rapidamente e ainda me deu um voucher de desconto!"
+                    </p>
+                    <div class="testimonial-food">
+                        <img src="img/food/s1.jpg" alt="Combo">
+                        <div class="food-info">
+                            <h5>Combo Executivo</h5>
+                            <p>Avaliado em 18/08/2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Cliente" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Ricardo Mendes</h4>
+                            <p>Cliente desde o início</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Já experimentei quase todo o cardápio e nunca me decepcionei! A qualidade é consistente e os preços justos. O que mais me impressiona é o cuidado com a embalagem - tudo chega perfeito, mesmo em dias de chuva. Parabéns à equipe!"
+                    </p>
+                    <div class="testimonial-food">
+                        <img src="img/food/b1.jpg" alt="Variados">
+                        <div class="food-info">
+                            <h5>Diversos itens</h5>
+                            <p>Avaliado em 30/08/2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulário para adicionar depoimento -->
+            <div class="add-testimonial">
+                <h3>Deixe seu depoimento</h3>
+                <form id="testimonial-form">
+                    <div class="form-group">
+                        <label for="client-name">Seu nome</label>
+                        <input type="text" id="client-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="client-email">Seu e-mail (não será publicado)</label>
+                        <input type="email" id="client-email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="food-ordered">Qual comida você pediu?</label>
+                        <select id="food-ordered" required>
+                            <option value="">Selecione...</option>
+                            <option value="Pizza">Pizza</option>
+                            <option value="Hambúrguer">Hambúrguer</option>
+                            <option value="Sanduíche">Sanduíche</option>
+                            <option value="Combo">Combo</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Sua avaliação</label>
+                        <div class="rating-input">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5" title="Excelente">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="Muito bom">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="Bom">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="Regular">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="Ruim">★</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonial-text">Seu depoimento</label>
+                        <textarea id="testimonial-text" placeholder="Conte sua experiência com nossa comida, atendimento, entrega..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Depoimento</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="aboutus-flex">
+                    <img src="img/footerimage.png" alt="Logo" class="footer-logo"/>
+                    <div class="about-content">
+                        <p>Food Fusion connects customers with local food centers, providing a seamless and delightful dining experience.</p>
+                        <p>Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+                    </div>
+                </div>
+                <div class="FoodFusion">
+                    <h3>Food Fusion</h3>
+                    <div class="foodfusion">
+                        <a href="about.html">Who We Are</a>
+                        <a href="Blog.html">Blog</a>
+                        <a href="WorkWithus.html">Work With Us</a>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="ReportFraud.html">Report Fraud</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Learn More</h3>
+                    <div class="learnmore">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Security</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Lodge Complaint</a>
+                        <a href="#">Testimonials</a>
+                    </div>
+                </div>
+                <div class="FollowUs">
+                    <h3>Social Links</h3>
+                    <div class="social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/">
+                                <img src="/img/footer-icons/facebook.svg" alt="Facebook icon" width="24" height="24">
+                                Facebook
+                            </a></li>
+                            <li><a href="https://www.instagram.com/">
+                                <img src="/img/footer-icons/instagram.svg" alt="Instagram icon" width="24" height="24">
+                                Instagram
+                            </a></li>
+                            <li><a href="https://x.com/">
+                                <img src="/img/footer-icons/x-twitter.svg" alt="Twitter icon" width="24" height="24">
+                                Twitter
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Design By <a href="#">Rutika❤️</a></p>
+        </div>
+    </section>
+    
+    <!-- Botões de rolagem -->
+    <div class="scroll-buttons">
+        <button id="scroll-up-btn" class="scroll-btn" title="Scroll up">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+        <button id="scroll-down-btn" class="scroll-btn" title="Scroll down">
+            <i class="fa fa-arrow-down"></i>
+        </button>
+    </div>
+    
+    <a id="back-to-top" class="btn-primary">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <audio id="cart-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" preload="auto"></audio>
+    <audio id="testimonial-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" preload="auto"></audio>
+
+    <script>
+    // Função para remover item do carrinho e atualizar o total
+    function removeCartItem(button) {
+        event.preventDefault();
+        
+        // Remove a linha do item
+        const row = button.closest('tr');
+        row.remove();
+        
+        // Atualiza o total
+        updateCartTotal();
+        
+        // Atualiza o contador do carrinho
+        updateCartCount();
+    }
+    
+    // Função para calcular e atualizar o total do carrinho
+    function updateCartTotal() {
+        let total = 0;
+        const items = document.querySelectorAll('.cart-item');
+        
+        items.forEach(item => {
+            const priceText = item.querySelector('.item-total').textContent;
+            const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+            total += price;
+        });
+        
+        // Atualiza o total exibido
+        document.getElementById('cart-total').textContent = `&#8377; ${total.toFixed(2)}`;
+    }
+    
+    // Função para atualizar o contador de itens no carrinho
+    function updateCartCount() {
+        const itemCount = document.querySelectorAll('.cart-item').length;
+        document.querySelector('.badge').textContent = itemCount;
+    }
+    
+    // Função para enviar depoimento
+    document.getElementById('testimonial-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Verifica se uma avaliação foi selecionada
+        const rating = document.querySelector('input[name="rating"]:checked');
+        if (!rating) {
+            alert('Por favor, selecione uma avaliação com estrelas.');
+            return;
+        }
+        
+        // Toca o som de confirmação
+        document.getElementById('testimonial-sound').play();
+        
+        // Mostra mensagem de sucesso
+        alert('Obrigado pelo seu depoimento! Ele será analisado e em breve aparecerá em nossa página.');
+        
+        // Limpa o formulário
+        this.reset();
+    });
+    
+    $(document).ready(function(){
+        // Seleciona todos os botões "Add To Cart"
+        $('.food-menu-box input[type="submit"][value="Add To Cart"]').on('click', function(e) {
+            e.preventDefault(); 
+            $('#cart-sound').get(0).play();
+            console.log('Item added to cart! (Sound played)');
+        });
+        
+        // Botão de rolar para cima
+        $('#scroll-up-btn').click(function(){
+            $('html, body').animate({scrollTop: 0}, 800);
+        });
+        
+        // Botão de rolar para baixo
+        $('#scroll-down-btn').click(function(){
+            $('html, body').animate({scrollTop: $(document).height()}, 800);
+        });
+        
+        // Mostrar/ocultar botões de rolagem
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 200) {
+                $('.scroll-buttons').fadeIn();
+            } else {
+                $('.scroll-buttons').fadeOut();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
