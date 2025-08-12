@@ -4,12 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós - Online Food Delivery Website</title>
+    <title>Combo Builder - Online Food Delivery Website</title>
+    
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="css/hover-min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .combo-builder-section {
+            padding: 80px 20px;
+            background-color: #f8f8f8;
+            min-height: 80vh;
+        }
+        .combo-builder-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .combo-options {
+            flex: 2;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .combo-summary {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .option-group h3 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .option-item:hover, .option-item.selected {
+            background-color: #f4f4f4;
+        }
+        .option-item input[type="radio"] {
+            margin-right: 15px;
+        }
+        #combo-image {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .total-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f44336;
+        }
+        .btn-add-to-cart {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
     <header class="navbar">
         <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
@@ -31,10 +103,10 @@
                         <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
                         <li><a class="hvr-underline-from-center" href="categories.html">Categories</a></li>
                         <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
-                        <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>
+                        <li><a class="hvr-underline-from-center" href="nutrition.html">Nutrition Info</a></li>                       
                         <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
                         <li><a class="hvr-underline-from-center" href="depoimentos.html">Avaliações</a></li>
-                        <li><a class="hvr-underline-from-center" href="about.html">About Us</a></li> 
+                        <li><a class="hvr-underline-from-center" href="about.html">About Us</a></li>
                         <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
                         <li><a class="hvr-underline-from-center" href="privacy.html">Privacidade</a></li>                        
                         <li><a class="hvr-underline-from-center" href="login.html">Login</a></li>
@@ -93,58 +165,75 @@
             </div>
         </nav>
     </header>
-    <section class="about-us-section" style="padding: 60px 20px; background-color: #f8f8f8;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.8rem; font-weight: 700; color: #333; margin-bottom: 40px;">Sobre Nós</h2>
+    <section class="combo-builder-section">
+        <div class="container">
+            <h2 class="text-center">Monte Seu Combo</h2>
             <div class="heading-border"></div>
 
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px;">
-                <div class="about-card" style="flex: 1; min-width: 300px; background: white; border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                    <h3 style="font-size: 1.8rem; color: #f44336; margin-bottom: 20px;">Nossa História</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: #666;">
-                        A Food Fusion nasceu da paixão por conectar pessoas à culinária de qualidade. Iniciamos nossa jornada em 2025 com o objetivo de simplificar a experiência de pedido de comida, trazendo os melhores sabores locais diretamente para a casa de nossos clientes. Desde então, crescemos e nos tornamos uma plataforma confiável, sempre buscando inovação e excelência.
-                    </p>
+            <div class="combo-builder-container">
+                <div class="combo-options">
+                    <div class="option-group">
+                        <h3>Prato Principal</h3>
+                        <div class="option-item" data-price="10.00" data-image="imgcombopizza.jpg">
+                            <label><input type="radio" name="main" value="pizza"> Pizza</label>
+                            <span>&#8377;10.00</span>
+                        </div>
+                        <div class="option-item" data-price="9.00" data-image="img/combo/hamburguer.png">
+                            <label><input type="radio" name="main" value="hamburguer"> Hambúrguer</label>
+                            <span>&#8377;9.00</span>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3>Acompanhamento</h3>
+                        <div class="option-item" data-price="4.00" data-image="img/combo/acompanhamento-fritas.png">
+                            <label><input type="radio" name="side" value="fritas"> Batata Frita</label>
+                            <span>&#8377;4.00</span>
+                        </div>
+                        <div class="option-item" data-price="3.00" data-image="img/combo/acompanhamento-salada.png">
+                            <label><input type="radio" name="side" value="salada"> Salada</label>
+                            <span>&#8377;3.00</span>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3>Bebida</h3>
+                        <div class="option-item" data-price="2.50" data-image="img/combo/bebida-coca.png">
+                            <label><input type="radio" name="drink" value="coca"> Coca-Cola</label>
+                            <span>&#8377;2.50</span>
+                        </div>
+                        <div class="option-item" data-price="2.00" data-image="img/combo/bebida-suco.png">
+                            <label><input type="radio" name="drink" value="suco"> Suco Natural</label>
+                            <span>&#8377;2.00</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="about-card" style="flex: 1; min-width: 300px; background: white; border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                    <h3 style="font-size: 1.8rem; color: #f44336; margin-bottom: 20px;">Nossa Missão</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: #666;">
-                        Nossa missão é proporcionar uma experiência gastronômica inesquecível, conectando nossos clientes a uma vasta gama de opções culinárias de forma rápida, eficiente e segura. Queremos ser o elo entre a sua fome e os pratos mais deliciosos da sua região.
-                    </p>
-                </div>
-
-                <div class="about-card" style="flex: 1; min-width: 300px; background: white; border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                    <h3 style="font-size: 1.8rem; color: #f44336; margin-bottom: 20px;">Nossos Valores</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8; color: #666;">
-                        <li style="margin-bottom: 10px;"><i class="fa fa-check-circle" style="color: #f44336; margin-right: 10px;"></i> **Foco no Cliente:** Suas necessidades são nossa prioridade.</li>
-                        <li style="margin-bottom: 10px;"><i class="fa fa-check-circle" style="color: #f44336; margin-right: 10px;"></i> **Qualidade:** Comprometimento com a excelência em tudo que fazemos.</li>
-                        <li style="margin-bottom: 10px;"><i class="fa fa-check-circle" style="color: #f44336; margin-right: 10px;"></i> **Inovação:** Buscamos constantemente novas formas de aprimorar nossos serviços.</li>
-                        <li style="margin-bottom: 10px;"><i class="fa fa-check-circle" style="color: #f44336; margin-right: 10px;"></i> **Integridade:** Agimos com honestidade e transparência.</li>
-                        <li style="margin-bottom: 10px;"><i class="fa fa-check-circle" style="color: #f44336; margin-right: 10px;"></i> **Comunidade:** Apoiamos negócios locais e valorizamos a culinária regional.</li>
-                    </ul>
+                <div class="combo-summary">
+                    <h3>Seu Combo</h3>
+                    <img id="combo-image" src="https://via.placeholder.com/350" alt="Seu Combo">
+                    <div class="total-price-container">
+                        <p>Total:</p>
+                        <p id="total-price" class="total-price">&#8377;0.00</p>
+                    </div>
+                    <button class="btn-primary btn-add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    </head>
-<body>
+    </section>
     <section class="footer">
         <div class="container">
             <div class="grid-3">
+
                 <div class="aboutus-flex">
                     <img src="img/footerimage.png" alt="Logo" class="footer-logo"/>
                     <div class="about-content">
                         <p>Food Fusion connects customers with local food centers, providing a seamless and delightful dining experience.</p>
-                        <p>Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+                        <p>Our shared passion for food and community drives us to bring qualiy meals directly to you doorstep.</p>
                     </div>
                 </div>
                 <div class="FoodFusion">
                     <h3>Food Fusion</h3>
                     <div class="foodfusion">
-                        <a href="about.html">Who We Are</a>
+                        <a href="WhoWeAre.html">Who We Are</a>
                         <a href="Blog.html">Blog</a>
                         <a href="WorkWithus.html">Work With Us</a>
                         <a href="contact.html">Contact Us</a>
@@ -195,5 +284,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="js/custom.js"></script>
+
+    <script src="js/combo-builder.js"></script>
 </body>
 </html>
